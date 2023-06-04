@@ -33,8 +33,7 @@ int main()
          if (n < 0)
               perror("scandir");
          else {
-                while (n > 2)
-                  {
+                while (n > 2){
                 	char X[60];
                 	strcpy(X,"Picture/");
        	            strcat(X,Pnamelist[n-1]->d_name);
@@ -42,6 +41,8 @@ int main()
        	            delete Pnamelist[n-1];
                     n--;
                   }
+                for(int i=1;i>-1;i--)
+                    delete Pnamelist[i];
                 delete Pnamelist;
               }
     vector<string> names;
@@ -52,8 +53,7 @@ int main()
      if (n2 < 0)
           perror("scandir");
      else {
-            while (n2 > 2)
-              {
+            while (n2 > 2){
             	char X[60];
             	strcpy(X,"music/");
    	            strcat(X,namelist[n2-1]->d_name);
@@ -61,7 +61,8 @@ int main()
    	            delete namelist[n2-1];
                 n2--;
               }
-
+            for(int i=1;i>-1;i--)
+              delete namelist[i];
             delete namelist;
           }
     if (!music.openFromFile(names[0]))
