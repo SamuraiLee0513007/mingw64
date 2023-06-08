@@ -4,7 +4,6 @@
 #include <iostream>
 #include <iterator>
 #include <dirent.h>
-#include <windows.h>
 using namespace sf;
 using namespace std;
 int main()
@@ -28,7 +27,6 @@ int main()
     vector<string> Pnames;
         struct dirent **Pnamelist;
          int n;
-
          n = scandir("Picture/", &Pnamelist, NULL, alphasort);
          if (n < 0)
               perror("scandir");
