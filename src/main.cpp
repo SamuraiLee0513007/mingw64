@@ -10,18 +10,8 @@ int main()
 {
     // Create the main window
     RenderWindow window(VideoMode(960, 960), "Michelle.exe",Style::Titlebar|Style::Close);
-
     // Load a sprite to display
     Texture texture;
-    if (!texture.loadFromFile("Picture/SM.jpg"))
-        return EXIT_FAILURE;
-    Sprite sprite(texture);
-    // Create a graphical text to display
-    Font font;
-    if (!font.loadFromFile("ChunkFive-Regular.otf"))
-        return EXIT_FAILURE;
-    Text text("Never give up!!!Add oil", font, 30);
-    text.setFillColor(Color::Black);
     // Load a music to play
     Music music;
     vector<string> Pnames;
@@ -46,7 +36,6 @@ int main()
     vector<string> names;
     struct dirent **namelist;
      int n2;
-
      n2 = scandir("music/", &namelist, NULL, alphasort);
      if (n2 < 0)
           perror("scandir");
@@ -63,6 +52,15 @@ int main()
               delete namelist[i];
             delete namelist;
           }
+     if (!texture.loadFromFile(Pnames[0]))
+        return EXIT_FAILURE;
+    Sprite sprite(texture);
+    // Create a graphical text to display
+    Font font;
+    if (!font.loadFromFile("ChunkFive-Regular.otf"))
+        return EXIT_FAILURE;
+    Text text("Never give up!!!Add oil", font, 30);
+    text.setFillColor(Color::Black);
     if (!music.openFromFile(names[0]))
       return EXIT_FAILURE;
     Event event;
